@@ -1,0 +1,136 @@
+git config --global user.name "KhushiJigali"
+git config --global user.email "khushikiranjigali@gmail.com"
+git config --list
+mkdir first
+cd first
+git init
+git status
+touch file.txt
+echo "Hello GitHub Project" > file.txt
+cat file.txt
+git add .
+git status
+git commit -m "Initial commit"
+git log
+git remote add origin https://github.com/KhushiJigali/frst.git
+git push -u origin master
+cd ..
+git clone https://github.com/KhushiJigali/frst.git
+cd frst
+git status
+echo "Second line added" >> file.txt
+git add .
+git commit -m "Second commit"
+git log
+git diff
+git reset --soft HEAD~1
+git reset --mixed HEAD~1
+git reset --hard HEAD
+
+
+
+
+#2nd one
+git clone https://github.com/KhushiJigali/frst.git
+cd frst
+git status
+git branch feature1
+git checkout feature1
+echo "Feature branch line" >> file.txt
+cat file.txt
+git add .
+git commit -m "Added feature in feature1 branch"
+git checkout master
+echo "Master branch line" >> file.txt
+git add .
+git commit -m "Added change in master branch"
+git diff master feature1
+git merge feature1
+git log
+git branch
+git push origin master
+
+
+
+git checkout -b conflictbranch
+echo "Change from conflict branch" > file.txt
+git add .
+git commit -m "Change in conflict branch"
+git checkout master
+echo "Change from master branch" > file.txt
+git add .
+git commit -m "Change in master branch"
+git merge conflictbranch
+
+
+
+git add file.txt
+git commit -m "Resolved merge conflict"
+git push origin master
+
+
+git clone https://github.com/yourusername/frst.git
+
+git checkout -b newfeature
+git add .
+git commit -m "Added new feature"
+git push origin newfeature
+
+#3rd one
+# Start Jenkins Server
+java -jar jenkins.war --httpPort=8080
+
+# Open Jenkins in browser
+http://localhost:8080
+
+# Start ngrok to expose Jenkins server
+ngrok http 8080
+
+# Copy the HTTPS forwarding URL from ngrok
+# Example:
+https://abcd1234.ngrok.io
+
+# Create Jenkins Project (in Jenkins UI)
+Jenkins Dashboard → New Item → Enter Project Name → Select Freestyle Project → OK
+
+# Connect GitHub Repository
+Source Code Management → Git
+Repository URL: https://github.com/KhushiJigali/frst.git
+
+# Enable Webhook Trigger
+Build Triggers → Select "GitHub hook trigger for GITScm polling"
+
+# Configure Webhook in GitHub
+Repository → Settings → Webhooks → Add Webhook
+
+Payload URL:
+https://abcd1234.ngrok.io/github-webhook/
+
+Content Type:
+application/json
+
+Event Trigger:
+Just the push event
+
+# Save Webhook
+
+# Now push code to trigger Jenkins build
+git add .
+git commit -m "Trigger Jenkins Build"
+git push origin master
+
+# Webhook CI/CD Flow
+Developer writes code
+git push
+GitHub repository
+Webhook trigger
+ngrok public URL
+Local Jenkins server
+Jenkins build automatically starts
+
+# Verify build
+Jenkins Dashboard → Build History
+
+# Verify webhook delivery
+GitHub Repository → Settings → Webhooks → Recent Deliveries
+Status: 200 OK
